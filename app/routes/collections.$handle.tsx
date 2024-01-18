@@ -110,7 +110,8 @@ function ProductItem({
   );
 }
 
-const PRODUCT_ITEM_FRAGMENT = `#graphql
+// NOTE: https://shopify.dev/docs/api/storefront/2022-04/objects/collection
+const COLLECTION_QUERY = `#graphql
   fragment MoneyProductItem on MoneyV2 {
     amount
     currencyCode
@@ -143,11 +144,6 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
       }
     }
   }
-` as const;
-
-// NOTE: https://shopify.dev/docs/api/storefront/2022-04/objects/collection
-const COLLECTION_QUERY = `#graphql
-  ${PRODUCT_ITEM_FRAGMENT}
   query Collection(
     $handle: String!
     $country: CountryCode
